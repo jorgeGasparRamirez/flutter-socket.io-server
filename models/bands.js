@@ -12,6 +12,7 @@ class Bands {
     }
 
     getBands() {
+        console.log('ENTRO EN EL ACTIVE BANDS');
         return this.bands;
     }
 
@@ -21,7 +22,7 @@ class Bands {
     }
 
     voteBand( id = '' ) {
-
+      console.log('ENTRO voteBand');
         this.bands = this.bands.map( band => {
 
             if ( band.id === id ) {
@@ -32,6 +33,7 @@ class Bands {
             }
 
         });
+        console.log(this.bands);
 
     }
 

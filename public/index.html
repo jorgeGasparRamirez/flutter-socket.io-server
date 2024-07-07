@@ -18,7 +18,7 @@
          console.log('Perdimos conexion')
         });
 
-        socket.emit('mensaje', { nombre : 'fernando'});
+        // socket.emit('mensaje', { nombre : 'fernando'});
 
         socket.on('mensaje', function(payload){
             console.log('Escuchando:',payload);
@@ -29,6 +29,7 @@
         })
 
         socket.on('active-bands',function(payload){
+            console.log('ENTRO en el pintar TABLE');
             console.clear;
             console.table(payload);
 

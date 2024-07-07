@@ -15,13 +15,13 @@ console.log(bands.getBands());
 
 io.on('connection', client => {
     console.log('Cliente conectado');
-
-    client.emit('active-bands',bands.getBands());
+    
+    client.emit('active-bands',bands.getBands());    
 
     client.on('disconnect', () => { console.log('Cliente desconectado')});
 
     client.on('mensaje',(payload)=>{
-        console.log('Mensaje!!!!!!', payload);
+        //console.log('Mensaje!!!!!!', payload);
 
         io.emit('mensaje',{admin:'Nuevo mensaje'});
     });
@@ -34,9 +34,9 @@ io.on('connection', client => {
        client.broadcast.emit('mensaje2',payload);
     });
 
-    client.on('vote-band',(payload)=>{
+    client.on('vote-band',(payload)=>{                                         
      bands.voteBand(payload['id']);
-     client.emit('active-bands',bands.getBands());
+     io.emit('active-bands',bands.getBands());
     });
 
     client.on('add-band',(payload)=>{
